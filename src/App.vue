@@ -2,7 +2,7 @@
   <div class="main-wrapper">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
       <a class="navbar-brand js-scroll-trigger" href="#about">
-        <span class="d-block d-lg-none">Start Bootstrap</span>
+        <span class="d-block d-lg-none">Resume</span>
         <span class="d-none d-lg-block">
           <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="./assets/profile.jpg" alt="">
         </span>
@@ -42,12 +42,12 @@
             <span class="text-primary">{{ surname }}</span>
           </h1>
           <div class="subheading mb-5">{{ address }}
-            <a href="mailto:name@email.com">{{ email }}</a>
+            <a :href="'mailto:' + email">{{ email }}</a>
           </div>
           <p class="mb-5">{{ aboutMe }}</p>
           <ul class="list-inline list-social-icons mb-0">
             <li class="list-inline-item">
-              <a href="#">
+              <a :href="facebookLink" target="_blank">
                 <span class="fa-stack fa-lg">
                   <i class="fa fa-circle fa-stack-2x"></i>
                   <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
@@ -55,7 +55,7 @@
               </a>
             </li>
             <li class="list-inline-item">
-              <a href="#">
+              <a :href="twitterLink" target="_blank">
                 <span class="fa-stack fa-lg">
                   <i class="fa fa-circle fa-stack-2x"></i>
                   <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
@@ -63,7 +63,7 @@
               </a>
             </li>
             <li class="list-inline-item">
-              <a href="#">
+              <a :href="linkedInLink" target="_blank">
                 <span class="fa-stack fa-lg">
                   <i class="fa fa-circle fa-stack-2x"></i>
                   <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
@@ -71,7 +71,7 @@
               </a>
             </li>
             <li class="list-inline-item">
-              <a href="#">
+              <a :href="githubLink" target="_blank">
                 <span class="fa-stack fa-lg">
                   <i class="fa fa-circle fa-stack-2x"></i>
                   <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -86,10 +86,12 @@
         <div class="my-auto">
           <h2 class="mb-5">Experience</h2>
 
-          <div class="resume-item d-flex flex-column flex-md-row mb-5" v-for="job in experience" :key="job.description">
+          <div class="resume-item d-flex flex-column flex-md-row mb-5" v-for="(job, index) in experience" :key="index">
             <div class="resume-content mr-auto">
               <h3 class="mb-0">{{ job.position }}</h3>
-              <div class="subheading mb-3">{{ job.company }}</div>
+              <div class="subheading mb-3">
+                <a :href="job.companyLink" target="_blank">{{ job.company }}</a>
+              </div>
               <p>{{ job.description }}</p>
             </div>
             <div class="resume-date text-md-right">
@@ -105,26 +107,15 @@
         <div class="my-auto">
           <h2 class="mb-5">Education</h2>
 
-          <div class="resume-item d-flex flex-column flex-md-row mb-5">
+          <div class="resume-item d-flex flex-column flex-md-row mb-5" v-for="(item, index) in education" :key="index">
             <div class="resume-content mr-auto">
-              <h3 class="mb-0">University of Colorado Boulder</h3>
-              <div class="subheading mb-3">Bachelor of Science</div>
-              <div>Computer Science - Web Development Track</div>
-              <p>GPA: 3.23</p>
+              <h3 class="mb-0">{{ item.school }}</h3>
+              <div class="subheading mb-3">{{ item.degree }}</div>
+              <div>{{ item.area }}</div>
+              <p>GPA: {{ item.gpa }}</p>
             </div>
             <div class="resume-date text-md-right">
-              <span class="text-primary">August 2006 - May 2010</span>
-            </div>
-          </div>
-
-          <div class="resume-item d-flex flex-column flex-md-row">
-            <div class="resume-content mr-auto">
-              <h3 class="mb-0">James Buchanan High School</h3>
-              <div class="subheading mb-3">Technology Magnet Program</div>
-              <p>GPA: 3.56</p>
-            </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">August 2002 - May 2006</span>
+              <span class="text-primary">{{ item.startDate }} - {{ item.endDate }}</span>
             </div>
           </div>
 
@@ -138,37 +129,44 @@
           <div class="subheading mb-3">Programming Languages &amp; Tools</div>
           <ul class="list-inline list-icons">
             <li class="list-inline-item">
-              <i class="devicons devicons-html5"></i>
+              <a href="" target="_blank">
+                <i class="devicons devicons-html5"></i>
+              </a>
             </li>
             <li class="list-inline-item">
-              <i class="devicons devicons-css3"></i>
+              <a href="" target="_blank">
+                <i class="devicons devicons-css3"></i>
+              </a>
             </li>
             <li class="list-inline-item">
-              <i class="devicons devicons-javascript"></i>
+              <a href="" target="_blank">
+                <i class="devicons devicons-javascript"></i>
+              </a>
             </li>
             <li class="list-inline-item">
-              <i class="devicons devicons-jquery"></i>
+              <a href="" target="_blank">
+                <i class="devicons devicons-jquery"></i>
+              </a>
             </li>
             <li class="list-inline-item">
-              <i class="devicons devicons-sass"></i>
+              <a href="" target="_blank">
+                <i class="devicons devicons-sass"></i>
+              </a>
             </li>
             <li class="list-inline-item">
-              <i class="devicons devicons-less"></i>
+              <a href="" target="_blank">
+                <i class="devicons devicons-bootstrap"></i>
+              </a>
             </li>
             <li class="list-inline-item">
-              <i class="devicons devicons-bootstrap"></i>
+              <a href="" target="_blank">
+                <i class="devicons devicons-wordpress"></i>
+              </a>
             </li>
             <li class="list-inline-item">
-              <i class="devicons devicons-wordpress"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-grunt"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-gulp"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-npm"></i>
+              <a href="" target="_blank">
+                <i class="devicons devicons-npm"></i>
+              </a>
             </li>
           </ul>
 
@@ -193,8 +191,7 @@
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="interests">
         <div class="my-auto">
           <h2 class="mb-5">Interests</h2>
-          <p>Apart from being a web developer, I enjoy most of my time being outdoors. In the winter, I am an avid skiier and novice ice climber. During the warmer months here in Colorado, I enjoy mountain biking, free climbing, and kayaking.</p>
-          <p class="mb-0">When forced indoors, I follow a number of sci-fi and fantasy genre movies and television shows, I am an aspiring chef, and I spend a large amount of my free time exploring the latest technolgy advancements in the front-end web development world.</p>
+          <p>Many!</p>
         </div>
       </section>
 
@@ -202,33 +199,8 @@
         <div class="my-auto">
           <h2 class="mb-5">Awards &amp; Certifications</h2>
           <ul class="fa-ul mb-0">
-            <li>
-              <i class="fa-li fa fa-trophy text-warning"></i>
-              Google Analytics Certified Developer</li>
-            <li>
-              <i class="fa-li fa fa-trophy text-warning"></i>
-              Mobile Web Specialist - Google Certification</li>
-            <li>
-              <i class="fa-li fa fa-trophy text-warning"></i>
-              1<sup>st</sup>
-              Place - University of Colorado Boulder - Emerging Tech Competition 2009</li>
-            <li>
-              <i class="fa-li fa fa-trophy text-warning"></i>
-              1<sup>st</sup>
-              Place - University of Colorado Boulder - Adobe Creative Jam 2008 (UI Design Category)</li>
-            <li>
-              <i class="fa-li fa fa-trophy text-warning"></i>
-              2<sup>nd</sup>
-              Place - University of Colorado Boulder - Emerging Tech Competition 2008</li>
-            <li>
-            <li>
-              <i class="fa-li fa fa-trophy text-warning"></i>
-              1<sup>st</sup>
-              Place - James Buchanan High School - Hackathon 2006</li>
-            <li>
-              <i class="fa-li fa fa-trophy text-warning"></i>
-              3<sup>rd</sup>
-              Place - James Buchanan High School - Hackathon 2005</li>
+            <li><i class="fa-li fa fa-trophy text-warning"></i>
+            The Honor Society of Phi Kappa Phi</li>
           </ul>
         </div>
       </section>
@@ -241,40 +213,34 @@
 export default {
   data () {
     return {
-      title: 'My portfolio',
-      name: 'CLARENCE',
-      surname: 'TAYLOR',
-      address: '3542 Berry Street · Cheyenne Wells, CO 80810 · (317) 585-8468 ·',
-      email: 'name@email.com',
-      aboutMe: 'I am experienced in leveraging agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition.',
+      title: 'James Krizan || Full-Stack Web Developer',
+      name: 'James',
+      surname: 'Krizan',
+      address: '60 W 129th St Apt 7C New York, NY 10027 · 347.364.3704',
+      email: 'jameskrizan@outlook.com',
+      aboutMe: 'Experienced web developer.',
+      facebookLink: 'https://www.facebook.com/jaskrizan',
+      twitterLink: 'https://twitter.com/jameskrizan',
+      linkedInLink: 'https://www.linkedin.com/in/jameskrizan',
+      githubLink: 'https://github.com/jameskrizan',
       experience: [
         {
-          position: 'Senior Web Developer',
-          company: 'Intelitec Solutions',
-          description: 'Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.',
-          startDate: 'March 2013',
+          position: 'Test Engineer',
+          company: 'Real-Time Technology Solutions (RTTS)',
+          companyLink: 'https://www.rttsweb.com',
+          description: 'QA solutions expert.',
+          startDate: 'July 2017',
           endDate: 'Present'
-        },
+        }
+      ],
+      education: [
         {
-          position: 'Web Developer',
-          company: 'Intelitec Solutions',
-          description: 'Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.',
-          startDate: 'December 2011',
-          endDate: 'March 2013'
-        },
-        {
-          position: 'Junior Web Designer',
-          company: 'Shout! Media Productions',
-          description: 'Podcasting operational change management inside of workflows to establish a framework. Taking seamless key performance indicators offline to maximise the long tail. Keeping your eye on the ball while performing a deep dive on the start-up mentality to derive convergence on cross-platform integration.',
-          startDate: 'July 2010',
-          endDate: 'December 2011'
-        },
-        {
-          position: 'Web Design Intern',
-          company: 'Shout! Media Productions',
-          description: 'Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.',
-          startDate: 'September 2008',
-          endDate: 'June 2010'
+          school: 'Lycoming College',
+          degree: 'Bachelor of Arts',
+          area: 'Computer Science (Web Design and Development)',
+          gpa: '3.92',
+          startDate: 'September 2012',
+          endDate: 'January 2016'
         }
       ]
     }
@@ -320,12 +286,7 @@ body {
     padding-left: 17rem;
   }
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: 'Saira Extra Condensed', serif;
   font-weight: 700;
   text-transform: uppercase;
