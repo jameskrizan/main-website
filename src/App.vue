@@ -25,7 +25,7 @@
             <a class="nav-link js-scroll-trigger" href="#skills">Skills</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#interests">Interests</a>
+            <a class="nav-link js-scroll-trigger" href="#volunteerOther">Volunteer & Other Experience</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#awards">Awards</a>
@@ -117,6 +117,11 @@
             <div class="resume-date text-md-right">
               <span class="text-primary">{{ item.startDate }} - {{ item.endDate }}</span>
             </div>
+            <div class="resume-content mr-auto">
+              <ul>
+                <li v-for="(awardHonor, index) in item.awardHonor" :key="index">{{ awardHonor }}</li>
+              </ul>
+            </div>
           </div>
 
         </div>
@@ -188,9 +193,9 @@
         </div>
       </section>
 
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="interests">
+      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="volunteerOther">
         <div class="my-auto">
-          <h2 class="mb-5">Interests</h2>
+          <h2 class="mb-5">Volunteer & Other Experience</h2>
           <p>Many!</p>
         </div>
       </section>
@@ -227,10 +232,35 @@ export default {
         {
           position: 'Test Engineer',
           company: 'Real-Time Technology Solutions (RTTS)',
+          companyLocation: 'New York, NY',
           companyLink: 'https://www.rttsweb.com',
-          description: 'QA solutions expert.',
           startDate: 'July 2017',
-          endDate: 'Present'
+          endDate: 'Present',
+          description: 'Managed the testing data and analytics for a $1.5 billion project, using industry-standard software.',
+          tools: '',
+          projects: ''
+        },
+        {
+          position: 'Web Developer',
+          company: 'James Krizan Web Development',
+          companyLocation: 'New York, NY',
+          companyLink: 'https://jameskrizan.com',
+          startDate: 'January 2016',
+          endDate: 'July 2017',
+          description: 'Designed custom websites for clients using HTML5, JavaScript, and CSS, using popular content management systems including WordPress and Weebly.',
+          tools: '',
+          projects: ''
+        },
+        {
+          position: 'Web Developer',
+          company: 'Lycoming College',
+          companyLocation: 'Williamsport, PA',
+          companyLink: 'https://www.lycoming.edu',
+          startDate: 'December 2012',
+          endDate: 'January 2016',
+          description: 'Provided online and in person support to various academic departments regarding their web pages.',
+          tools: '',
+          projects: ''
         }
       ],
       education: [
@@ -240,7 +270,17 @@ export default {
           area: 'Computer Science (Web Design and Development)',
           gpa: '3.92',
           startDate: 'September 2012',
-          endDate: 'January 2016'
+          endDate: 'January 2016',
+          awardsHonors: [1, 2, 3]
+        },
+        {
+          school: 'University of Rochester',
+          degree: 'Bachelor of Science',
+          area: 'Computational Linguistics',
+          gpa: '3.60',
+          startDate: 'September 2011',
+          endDate: 'May 2012',
+          awardsHonors: ''
         }
       ]
     }
