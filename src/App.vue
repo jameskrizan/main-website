@@ -4,7 +4,7 @@
       <a class="navbar-brand js-scroll-trigger" href="#about">
         <span class="d-block d-lg-none">Resume</span>
         <span class="d-none d-lg-block">
-          <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="./assets/profile.jpg" alt="">
+          <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="./assets/img/profile.jpg" alt="">
         </span>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -86,16 +86,26 @@
         <div class="my-auto">
           <h2 class="mb-5">Experience</h2>
 
-          <div class="resume-item d-flex flex-column flex-md-row mb-5" v-for="(job, index) in experience" :key="index">
-            <div class="resume-content mr-auto">
-              <h3 class="mb-0">{{ job.position }}</h3>
-              <div class="subheading mb-3">
-                <a :href="job.companyLink" target="_blank">{{ job.company }}</a>
+          <div class="resume-item flex-column mb-5" v-for="(job, index) in experience" :key="index">
+            <div class="d-flex flex-column flex-md-row">
+              <div class="resume-content mr-auto">
+                <h3 class="mb-0">{{ job.position }}</h3>
+                <div class="subheading mb-3">
+                  <a :href="job.companyLink" target="_blank">{{ job.company }}</a>
+                </div>
+                <p>{{ job.description }}</p>
               </div>
-              <p>{{ job.description }}</p>
+              <div class="resume-date text-md-right">
+                <span class="text-primary">{{ job.startDate }} - {{ job.endDate }}</span>
+              </div>
             </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">{{ job.startDate }} - {{ job.endDate }}</span>
+            <div class="d-flex resume-content mt-4 flex-row flex-wrap">
+              <div class="col-6 col-lg-4 text-center mb-4" v-for="(relatedSite, index) in job.relatedSites" :key="index">
+                <a :href="relatedSite.link" target="_blank">
+                  <img class="img-thumbnail" :src="'/static/' + relatedSite.image" />
+                  <span>{{ relatedSite.name }}</span>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -133,46 +143,7 @@
 
           <div class="subheading mb-3">Programming Languages &amp; Tools</div>
           <ul class="list-inline list-icons">
-            <li class="list-inline-item">
-              <a href="" target="_blank">
-                <i class="devicons devicons-html5"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="" target="_blank">
-                <i class="devicons devicons-css3"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="" target="_blank">
-                <i class="devicons devicons-javascript"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="" target="_blank">
-                <i class="devicons devicons-jquery"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="" target="_blank">
-                <i class="devicons devicons-sass"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="" target="_blank">
-                <i class="devicons devicons-bootstrap"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="" target="_blank">
-                <i class="devicons devicons-wordpress"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="" target="_blank">
-                <i class="devicons devicons-npm"></i>
-              </a>
-            </li>
+            <li class="list-inline-item" v-for="(skill, index) in skills" :key="index"><a href="" target="_blank"><i :class="'devicons devicons-' + skill"></i></a></li>
           </ul>
 
           <div class="subheading mb-3">Workflow</div>
@@ -196,7 +167,28 @@
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="volunteerOther">
         <div class="my-auto">
           <h2 class="mb-5">Volunteer & Other Experience</h2>
-          <p>Many!</p>
+
+          <div class="resume-item flex-column mb-5" v-for="(volunteerOther, index) in volunteer" :key="index">
+            <div class="d-flex flex-column flex-md-row">
+              <div class="resume-content mr-auto">
+                <h3 class="mb-0"><a :href="volunteerOther.link" target="_blank">{{ volunteerOther.name }}</a> - {{ volunteerOther.location }}</h3>
+                <div class="subheading mb-3">
+                  <ul>
+                    <li v-for="(role, index) in volunteerOther.roles" :key="index">{{ role }}</li>
+                  </ul>
+                </div>
+                <p>{{ volunteerOther.description }}</p>
+              </div>
+            </div>
+            <div class="d-flex resume-content mt-4 flex-row flex-wrap">
+              <div class="col-6 col-lg-4 text-center mb-2" v-for="(relatedSite, index) in volunteerOther.relatedSites" :key="index">
+                <a :href="relatedSite.link" target="_blank">
+                  <img class="img-thumbnail" :src="'/static/' + relatedSite.image" />
+                </a>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -206,6 +198,8 @@
           <ul class="fa-ul mb-0">
             <li><i class="fa-li fa fa-trophy text-warning"></i>
             The Honor Society of Phi Kappa Phi</li>
+            <li><i class="fa-li fa fa-trophy text-warning"></i>
+            The Honor Society of Iota Alpha Kappa</li>
           </ul>
         </div>
       </section>
@@ -223,7 +217,7 @@ export default {
       surname: 'Krizan',
       address: '60 W 129th St Apt 7C New York, NY 10027 · 347.364.3704',
       email: 'jameskrizan@outlook.com',
-      aboutMe: 'Experienced web developer.',
+      aboutMe: 'Experienced web developer specializing in full-stack JavaScript implementations.',
       facebookLink: 'https://www.facebook.com/jaskrizan',
       twitterLink: 'https://twitter.com/jameskrizan',
       linkedInLink: 'https://www.linkedin.com/in/jameskrizan',
@@ -236,9 +230,7 @@ export default {
           companyLink: 'https://www.rttsweb.com',
           startDate: 'July 2017',
           endDate: 'Present',
-          description: 'Managed the testing data and analytics for a $1.5 billion project, using industry-standard software.',
-          tools: '',
-          projects: ''
+          description: 'Managed the testing data and analytics for a $1.5 billion project, using industry-standard software.'
         },
         {
           position: 'Web Developer',
@@ -248,8 +240,7 @@ export default {
           startDate: 'January 2016',
           endDate: 'July 2017',
           description: 'Designed custom websites for clients using HTML5, JavaScript, and CSS, using popular content management systems including WordPress and Weebly.',
-          tools: '',
-          projects: ''
+          relatedSites: [{name: 'Central Presbyterian Church', image: 'cpc.png', link: 'https://www.centralchurchnyc.org'}, {name: 'Margaret Kemmerer Artist Portfolio', image: 'kemmerer.png', link: 'https://margaretkemmerer.com'}, {name: 'Thrive International Programs', image: 'thrive.png', link: 'https://thriveip.org'}, {name: 'Gail Martensen Artist Portfolio', image: 'martensen.png', link: 'https://gailmartensenart.com'}, {name: 'Chef Co-op Programs', image: 'chef.png', link: 'https://http://chefco-op.com'}]
         },
         {
           position: 'Web Developer',
@@ -259,8 +250,7 @@ export default {
           startDate: 'December 2012',
           endDate: 'January 2016',
           description: 'Provided online and in person support to various academic departments regarding their web pages.',
-          tools: '',
-          projects: ''
+          relatedSites: [{name: 'Lycoming College', image: 'lycoming.png', link: 'https://www.lycoming.edu'}, {name: 'Underground Railroad Historical Site', image: 'ugrr.png', link: 'https://www.lycoming.edu/art/underground/'}]
         }
       ],
       education: [
@@ -281,6 +271,24 @@ export default {
           startDate: 'September 2011',
           endDate: 'May 2012',
           awardsHonors: ''
+        }
+      ],
+      skills: ['html5', 'npm', 'wordpress', 'bootstrap', 'sass', 'jquery', 'css3', 'javascript_badge', 'angular', 'bitbucket', 'github_badge', 'jira', 'java', 'ruby', 'ruby_on_rails', 'modernizr', 'nodejs', 'less', 'bower', 'photoshop', 'docker', 'eclipse', 'dreamweaver'],
+      volunteer: [
+        {
+          name: 'Thrive International Programs',
+          location: 'Williamsport, PA',
+          link: 'https://thriveip.org',
+          roles: ['Co-Founder', 'Vice President', 'Web Developer', 'ESL & Spanish Teacher'],
+          description: '',
+          relatedSites: [{image: 'thrive.png', link: 'https://thriveip.org'}]
+        },
+        {
+          name: 'Together One New York (TONY)',
+          location: 'Hell\'s Kitchen, NY',
+          link: 'https://togetheronenewyork.org',
+          roles: ['Director of Children\'s Programming', 'Director of the TASC Program', 'TASC, ESL, & Spanish Teacher', 'Board Member'],
+          description: ''
         }
       ]
     }
