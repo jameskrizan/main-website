@@ -25,7 +25,7 @@
             <a class="nav-link js-scroll-trigger" href="#skills">Skills</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#volunteerOther">Volunteer & Other Experience</a>
+            <a class="nav-link js-scroll-trigger" href="#volunteerOther">Volunteer</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#awards">Awards</a>
@@ -118,19 +118,17 @@
           <h2 class="mb-5">Education</h2>
 
           <div class="resume-item d-flex flex-column flex-md-row mb-5" v-for="(item, index) in education" :key="index">
-            <div class="resume-content mr-auto">
+            <div class="resume-content mr-auto mb-2">
               <h3 class="mb-0">{{ item.school }}</h3>
               <div class="subheading mb-3">{{ item.degree }}</div>
               <div>{{ item.area }}</div>
               <p>GPA: {{ item.gpa }}</p>
+              <ul class="fa-ul mb-0">
+                <li v-for="(award, index) in item.awards" :key="index"><i class="fa-li fa fa-trophy text-warning"></i>{{ award }}</li>
+              </ul>
             </div>
             <div class="resume-date text-md-right">
               <span class="text-primary">{{ item.startDate }} - {{ item.endDate }}</span>
-            </div>
-            <div class="resume-content mr-auto">
-              <ul>
-                <li v-for="(awardHonor, index) in item.awardHonor" :key="index">{{ awardHonor }}</li>
-              </ul>
             </div>
           </div>
 
@@ -195,11 +193,15 @@
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="awards">
         <div class="my-auto">
           <h2 class="mb-5">Awards &amp; Certifications</h2>
+          <div class="subheading mb-3">Awards & Honors</div>
           <ul class="fa-ul mb-0">
-            <li><i class="fa-li fa fa-trophy text-warning"></i>
-            The Honor Society of Phi Kappa Phi</li>
-            <li><i class="fa-li fa fa-trophy text-warning"></i>
-            The Honor Society of Iota Alpha Kappa</li>
+              <ul class="fa-ul mb-0">
+                <li v-for="(award, index) in awards" :key="index"><i class="fa-li fa fa-trophy text-warning"></i>{{ award }}</li>
+              </ul>
+          </ul>
+          <div class="subheading mb-3 mt-3">Presentations</div>
+          <ul>
+            <li>CELEA Conference 2016</li>
           </ul>
         </div>
       </section>
@@ -261,7 +263,7 @@ export default {
           gpa: '3.92',
           startDate: 'September 2012',
           endDate: 'January 2016',
-          awardsHonors: [1, 2, 3]
+          awards: ['Summa Cum Laude', 'Dean\'s List', 'Phi Kappa Phi Honor Society', 'Iota Alpha Kappa Honor Society', 'Omicron Delta Kappa Honor Society', 'Kocian Award in Mathematics']
         },
         {
           school: 'University of Rochester',
@@ -270,11 +272,39 @@ export default {
           gpa: '3.60',
           startDate: 'September 2011',
           endDate: 'May 2012',
-          awardsHonors: ''
+          awards: ['Dean\'s List']
         }
       ],
       skills: ['html5', 'npm', 'wordpress', 'bootstrap', 'sass', 'jquery', 'css3', 'javascript_badge', 'angular', 'bitbucket', 'github_badge', 'jira', 'java', 'ruby', 'ruby_on_rails', 'modernizr', 'nodejs', 'less', 'bower', 'photoshop', 'docker', 'eclipse', 'dreamweaver'],
       volunteer: [
+        {
+          name: 'Together One New York (TONY)',
+          location: 'Hell\'s Kitchen, NY',
+          link: 'https://togetheronenewyork.org',
+          roles: ['Director of Children\'s Programming', 'Director of the TASC Program', 'TASC, ESL, & Spanish Teacher', 'Board Member'],
+          description: ''
+        },
+        {
+          name: 'River Valley Internet',
+          location: 'Montoursville, PA',
+          link: 'http://www.rivervalleyinternet.net/',
+          roles: ['Wireless Installation Technician'],
+          description: ''
+        },
+        {
+          name: 'West Branch School',
+          location: 'Williamsport, PA',
+          link: 'https://www.westbranchschool.org/',
+          roles: ['Computer Science & Spanish Teacher'],
+          description: ''
+        },
+        {
+          name: 'Lycoming College Academic Resource Center',
+          location: 'Williamsport, PA',
+          link: 'https://www.lycoming.edu/academic-resource-center/',
+          roles: ['Computer Science, ESL, and Spanish Tutor'],
+          description: ''
+        },
         {
           name: 'Thrive International Programs',
           location: 'Williamsport, PA',
@@ -284,13 +314,14 @@ export default {
           relatedSites: [{image: 'thrive.png', link: 'https://thriveip.org'}]
         },
         {
-          name: 'Together One New York (TONY)',
-          location: 'Hell\'s Kitchen, NY',
-          link: 'https://togetheronenewyork.org',
-          roles: ['Director of Children\'s Programming', 'Director of the TASC Program', 'TASC, ESL, & Spanish Teacher', 'Board Member'],
+          name: 'Nativity Preparatory Academy',
+          location: 'Rochester, NY',
+          link: 'http://nativityrochester.org/',
+          roles: ['Math Tutor'],
           description: ''
         }
-      ]
+      ],
+      awards: ['Phi Kappa Phi Honor Society', 'Iota Alpha Kappa Honor Society', 'Omicron Delta Kappa Honor Society', 'Kocian Award in Mathematics']
     }
   },
   mounted () {
