@@ -103,6 +103,7 @@
               <div class="col-6 col-lg-4 text-center mb-4" v-for="(relatedSite, index) in job.relatedSites" :key="index">
                 <a :href="relatedSite.link" target="_blank">
                   <img class="img-thumbnail" :src="'/static/' + relatedSite.image" />
+                  <br />
                   <span>{{ relatedSite.name }}</span>
                 </a>
               </div>
