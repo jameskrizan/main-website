@@ -2,7 +2,7 @@
   <div class="main-wrapper">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
       <a class="navbar-brand js-scroll-trigger" href="#about">
-        <span class="d-block d-lg-none">Resume</span>
+        <span class="d-block d-lg-none">James Krizan</span>
         <span class="d-none d-lg-block">
           <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="./assets/img/profile.jpg" alt="">
         </span>
@@ -42,6 +42,7 @@
             <span class="text-primary">{{ surname }}</span>
           </h1>
           <div class="subheading mb-5">{{ address }}
+           ·
             <a :href="'mailto:' + email">{{ email }}</a>
           </div>
           <p class="mb-5">{{ aboutMe }}</p>
@@ -218,7 +219,7 @@ export default {
       title: 'James Krizan || Full-Stack Web Developer',
       name: 'James',
       surname: 'Krizan',
-      address: '60 W 129th St Apt 7C New York, NY 10027 · 347.364.3704',
+      address: 'New York, NY',
       email: 'jameskrizan@outlook.com',
       aboutMe: 'Experienced web developer specializing in full-stack JavaScript implementations.',
       facebookLink: 'https://www.facebook.com/jaskrizan',
